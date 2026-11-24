@@ -82,6 +82,10 @@ function verifyWritten(path: string, expected: string): void {
     console.error("FAIL: read-back text no longer passes the gate");
     process.exit(1);
   }
+  if (back.endsWith("\n")) {
+    console.error("FAIL: written file ends with a trailing newline");
+    process.exit(1);
+  }
 }
 
 mkdirSync(dirname(OUTPUT_PATH), { recursive: true });
